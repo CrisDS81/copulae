@@ -165,6 +165,22 @@ def form_options(options: dict, verbose: int, data: np.ndarray, copula: Copula):
                 'gtol': 1e-4,
             }
         }, options)
+    elif method_is('L-BFGS-B'):
+        return merge_dict({
+            'bounds': bounds,
+            'options':{
+                'disp':disp,
+                'maxcor': 10, 
+                'ftol': 2.220446049250313e-09, 
+                'gtol': 1e-02, 
+                'eps': 1e-02, 
+                'maxfun': 1500,
+                'maxiter': 100, 
+                'maxls': 20, 
+                'finite_diff_rel_step': None
+                            }
+        }, options)
+
     elif method_is('SLSQP'):
         return merge_dict({
             'bounds': bounds,
